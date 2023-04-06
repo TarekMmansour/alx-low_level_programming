@@ -1,22 +1,32 @@
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "lists.h"
 
 /**
-  * list_len - Show the number of elements of a list
-  * @h: A linked list
-  *
-  * Return: The number of elements of a list
-  */
-size_t list_len(const list_t *h)
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
 {
-	size_t count = 0;
+    listint_t *head;
+    listint_t *new;
+    listint_t hello = {8, NULL};
+    size_t n;
 
-	while (h)
-	{
-		h = h->next;
-		count++;
-	}
-
-	return (count);
+    head = &hello;
+    new = malloc(sizeof(listint_t));
+    if (new == NULL)
+    {
+        printf("Error\n");
+        return (1);
+    }
+    new->n = 9;
+    new->next = head;
+    head = new;
+    n = listint_len(head);
+    printf("-> %lu elements\n", n);
+    free(new);
+    return (0);
 }
